@@ -13,7 +13,7 @@ require_relative 'lib/player'
 
 puts " "
 puts " ****************************************************"
-puts " | BIENVENUE A LA FINALE ! Mais qui va l'emporter ? | ! "
+puts " | BIENVENUE A LA FINALE ! Mais qui va l'emporter ? |"
 puts " ****************************************************"
 puts " "
 player1 = Player.new("Ingrid")

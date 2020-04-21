@@ -1,4 +1,4 @@
-require 'pry'
+# require 'pry'
 
 class Player 
 # attributs et initialize
@@ -56,7 +56,7 @@ class HumanPlayer < Player
     @weapon_level = 1
      # j'ai rajouté cette ligne
     super(name)
-    @life_points = 90 #fait appel au initialize de la classe Player
+    @life_points = 20 #fait appel au initialize de la classe Player
   end
 
   def show_state
@@ -80,19 +80,30 @@ class HumanPlayer < Player
   end
 
   def search_health_pack
-    dé_random_number = rand(1..6)
-    life_points_won = dé_random_number
+    dice_random_number = rand(1..6)
+    life_points_won = dice_random_number
     if life_points_won == 1 
-      puts "Tu n'as rien trouvé... "
-    elsif life_points_won.between?(2, 5) && @life_points <= 100
-      life_points_won = life_points_won + @life_points
-      puts "Bravo, tu as trouvé un pack de +50 points de vie !"
+      puts "Tu n'as rien trouvé..."
+    elsif life_points_won.between?(2, 5) 
+      if @life_points <= 50
+        @life_points += 50
+        puts "Bravo, tu as trouvé un pack de +50 points de vie !"
+      else
+        puts "Dommage.. tu ne peux pas dépasser 100 points de vie"
+      end
+    else life_points_won == 6
+      if @life_points <= 20 
+        @life_points += 80
+        puts "Waow, tu as trouvé un pack de +80 points de vie !"
+      else 
+        puts "Dommage.. tu ne peux pas dépasser 100 points de vie"
+      end
     end
   end
 
 end
 
-binding.pry
+# binding.pry
 
 # humanplayer1 = HumanPlayer.new("nicolas")
 # humanplayer2 = HumanPlayer.new("virginie")
